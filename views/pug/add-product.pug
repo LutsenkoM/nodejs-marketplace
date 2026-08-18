@@ -1,0 +1,14 @@
+extends layouts/main-layout.pug
+
+block content
+    section.page-intro
+        p.eyebrow Admin
+        h1 Add a Product
+        p Create a new product entry for the shop catalog.
+
+    section.panel
+        form.product-form(action="/admin/add-product", method="POST")
+            label(for="title") Product title
+            .form-row
+                input#title(type="text", name="title", placeholder="e.g. Node.js Course", required)
+                button(type="submit") Add Product

@@ -1,0 +1,15 @@
+node_modules/
+
+# runtime data (файлова "база" застосунку)
+data/*.json
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# logs
+*.log
+npm-debug.log*

@@ -1,0 +1,26 @@
+<section class="page-intro">
+    <p class="eyebrow">Catalog</p>
+    <h1>Shop Products</h1>
+    <p>Browse products added through your Express routes.</p>
+</section>
+
+<section class="product-list">
+    {{#if prods}}
+        {{#each prods}}
+            <div class="product-card">
+                <img class="product-image" src="https://placehold.co/600x400/e0f2f1/00796b?text=Product" alt="{{this.title}}">
+                <div class="product-content">
+                    <h2 class="product-title">{{this.title}}</h2>
+                    <p class="product-price">$19.99</p>
+                    <%- include('../includes/include-to-cart.ejs', { product: product }) %>
+                </div>
+            </div>
+        {{/each}}
+    {{else}}
+        <section class="empty-state">
+            <h2>No products yet</h2>
+            <p>Add your first product from the admin page.</p>
+            <a class="button-link" href="/admin/add-product">Add Product</a>
+        </section>
+    {{/if}}
+</section>

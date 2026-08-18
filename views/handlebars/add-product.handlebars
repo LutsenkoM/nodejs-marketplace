@@ -1,0 +1,15 @@
+<section class="page-intro">
+    <p class="eyebrow">Admin</p>
+    <h1>Add a Product</h1>
+    <p>Create a new product entry for the shop catalog.</p>
+</section>
+
+<section class="panel">
+    <form class="product-form" action="/admin/add-product" method="POST">
+        <label for="title">Product title</label>
+        <div class="form-row">
+            <input id="title" type="text" name="title" placeholder="e.g. Node.js Course" required>
+            <button type="submit">Add Product</button>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,48 @@
+<%- include('../includes/head') %>
+<%- include('../includes/navigation') %>
+
+    <section class="page-intro">
+        <p class="eyebrow">Shop</p>
+        <h1>Your Cart</h1>
+        <p>Review the products you picked before checking out.</p>
+    </section>
+
+    <% if (hasProducts) { %>
+        <section class="cart">
+            <ul class="cart-list">
+                <% products.forEach(item => { %>
+                    <li class="cart-item">
+                        <img class="cart-item-image" src="<%= item.product.imageUrl %>" alt="<%= item.product.title %>">
+
+                        <div class="cart-item-info">
+                            <h2 class="cart-item-title"><%= item.product.title %></h2>
+                            <p class="cart-item-meta">$<%= item.product.price %> &times; <%= item.qty %></p>
+                        </div>
+
+                        <p class="cart-item-total">$<%= item.lineTotal.toFixed(2) %></p>
+
+                        <form action="/cart-delete-item" method="POST">
+                            <input type="hidden" name="productId" value="<%= item.product.id %>">
+                            <button type="submit" class="button-danger">Remove</button>
+                        </form>
+                    </li>
+                <% }); %>
+            </ul>
+
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Total</span>
+                    <strong>$<%= Number(totalPrice).toFixed(2) %></strong>
+                </div>
+                <a class="button-link" href="/checkout">Proceed to Checkout</a>
+            </div>
+        </section>
+    <% } else { %>
+        <section class="empty-state">
+            <h2>Your cart is empty</h2>
+            <p>Browse the shop and add a product to get started.</p>
+            <a class="button-link" href="/products">Go to Products</a>
+        </section>
+    <% } %>
+
+<%- include('../includes/end') %>

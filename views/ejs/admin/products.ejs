@@ -1,0 +1,35 @@
+<%- include('../includes/head') %>
+<%- include('../includes/navigation') %>
+
+    <section class="page-intro">
+        <p class="eyebrow">Catalog</p>
+        <h1>Shop Products</h1>
+        <p>Browse products added through your Express routes.</p>
+    </section>
+
+    <section class="product-list">
+        <% if (hasProducts) { %>
+            <% prods.forEach(product => { %>
+                <div class="product-card">
+                    <img class="product-image" src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                    <div class="product-content">
+                        <h2 class="product-title"><%= product.title %></h2>
+                        <p class="product-price">$<%= product.price %></p>
+                        <p class="product-description"><%= product.description %></p>
+                        <a class="button-link" href="/admin/edit-product/<%= product.id %>?edit=true">Edit</a>
+                        <form action="/admin/delete-product/<%= product.id %>" method="POST" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <section class="empty-state">
+                <h2>No products yet</h2>
+                <p>Add your first product from the admin page.</p>
+                <a class="button-link" href="/admin/add-product">Add Product</a>
+            </section>
+        <% } %>
+    </section>
+
+<%- include('../includes/end') %>

@@ -1,0 +1,22 @@
+extends layouts/main-layout.pug
+
+block content
+    section.page-intro
+        p.eyebrow Catalog
+        h1 Shop Products
+        p Browse products added through your Express routes.
+
+    section.product-list
+        if prods.length > 0
+            each product in prods
+                .product-card
+                    img.product-image(src="https://placehold.co/600x400/e0f2f1/00796b?text=Product", alt=product.title)
+                    .product-content
+                        h2.product-title #{product.title}
+                        p.product-price $19.99
+                        button(type="button") Add to Cart
+        else
+            section.empty-state
+                h2 No products yet
+                p Add your first product from the admin page.
+                a.button-link(href="/admin/add-product") Add Product
